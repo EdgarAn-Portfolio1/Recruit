@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.recruit.mapper.AdminMapper">
+
+	<select id="selectAllMembers" resultType="AccountVO">
+	SELECT MEMBERID, EMAIL, USERTYPE, REGDATE, ACTIVE
+	FROM MEMBER
+	</select>
+	
+	<select id="selectMemberByMemberID" parameterType="string" resultType="AccountVO">
+	SELECT MEMBERID, PASSWD, EMAIL, USERTYPE, REGDATE, ACTIVE
+	FROM MEMBER
+	WHERE MEMBERID = #{ memberId }
+	</select>
+
+	<insert id="insertMember" parameterType="AccountVO">
+	INSERT INTO MEMBER (memberId, passWd, email, userType, regDate, active)
+	VALUES (#{ memberId }, #{passWd}, #{email}, #{userType}, #{regDate}, #{active})
+	</insert>
+
+	<update id="updateMember" parameterType="AccountVO">
+	UPDATE MEMBER
+	SET EMAIL = #{ email }, PASSWD = #{ passwd }, active = #{ active }
+	WHERE MEMBERID = #{ memberId }
+	</update>
+	
+	<update id="updateMemberDeleted" parameterType="string">
+	UPDATE MEMBER
+	SET ACTIVE = false
+	WHERE MEMBERID = #{ memberId }
+	</update>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	 <typeAliases>
+	  <typeAlias type="com.recruit.vo.AccountVO" alias="AccountVO" />
+      <typeAlias type="com.recruit.vo.EpilogueBoardVO" alias="EpilogueBoardVO" />
+      <typeAlias type="com.recruit.vo.NoticeBoardVO" alias="NoticeBoardVO" />
+      <typeAlias type="com.recruit.vo.FreeBoardVO" alias="FreeBoardVO" />
+      <typeAlias type="com.recruit.vo.FreeBoardAttachVO" alias="FreeBoardAttachVO" />
+      <typeAlias type="com.recruit.vo.QuestionAnswerBoardVO" alias="QuestionAnswerBoardVO" />
+      <typeAlias type="com.recruit.vo.SharespecBoardVO" alias="SharespecBoardVO" />
+      <typeAlias type="com.recruit.vo.EnterprisesVO" alias="EnterprisesVO" />
+      <typeAlias type="com.recruit.vo.EnterprisesInfoVO" alias="EnterprisesInfoVO" />
+      <typeAlias type="com.recruit.vo.NewsVO" alias="NewsVO" />
+      <typeAlias type="com.recruit.vo.LikeVO" alias="LikeVO" />
+	  <typeAlias type="com.recruit.vo.BookMarkVO" alias="BookMarkVO" />
+      <typeAlias type="com.recruit.vo.GroupByWorkplaceVO" alias="GroupByWorkplaceVO" />
+	  <typeAlias type="com.recruit.vo.MyInfoVO" alias="MyInfoVO" />
+	  <typeAlias type="com.recruit.vo.WorkTypeVO" alias="WorkTypeVO" />	
+	  <typeAlias type="com.recruit.vo.BooksVO" alias="BooksVO" />
+
+   </typeAliases>
+   
+   <mappers>
+   	  <mapper resource="com/recruit/mapper/AccountMapper.xml"/>
+      <mapper resource="com/recruit/mapper/EpilogueBoardMapper.xml"/>
+      <mapper resource="com/recruit/mapper/NoticeBoardMapper.xml"/>
+      <mapper resource="com/recruit/mapper/FreeBoardMapper.xml"/>
+      <mapper resource="com/recruit/mapper/QuestionAnswerBoardMapper.xml"/>
+      <mapper resource="com/recruit/mapper/SharespecBoardMapper.xml"/>
+      <mapper resource="com/recruit/mapper/EnterprisesMapper.xml"/>
+      <mapper resource="com/recruit/mapper/EnterprisesInfoMapper.xml"/>
+      <mapper resource="com/recruit/mapper/NewsMapper.xml"/>
+      <mapper resource="com/recruit/mapper/MyInfoMapper.xml"/>
+      <mapper resource="com/recruit/mapper/BookMarkMapper.xml"/>
+      <mapper resource="com/recruit/mapper/BooksMapper.xml"/>
+   </mappers>
+
+</configuration>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.recruit.mapper.QuestionAnswerBoardMapper">
+	
+	<insert id="insertQaBoard" parameterType="QuestionAnswerBoardVO">
+	INSERT INTO board_qa (qa_title, qa_writer, qa_content)
+	VALUES (#{ qa_title }, #{ qa_writer }, #{ qa_content })
+	</insert>
+	
+	<select id="selectQaAll" resultType="QuestionAnswerBoardVO">
+	SELECT BOARD_QA_NO, QA_TITLE, QA_WRITER, QA_READCOUNT, QA_DATE, QA_DELETED
+	FROM BOARD_QA
+	ORDER BY BOARD_QA_NO DESC
+	</select>
+	
+	<select id="selectQaBoardByQaBoardNo" parameterType="int" resultType="QuestionAnswerBoardVO">
+	SELECT BOARD_QA_NO, QA_TITLE, QA_CONTENT, QA_WRITER, QA_DATE, QA_READCOUNT
+	FROM BOARD_QA
+	WHERE BOARD_QA_NO = #{ board_qa_no } AND QA_DELETED = FALSE
+	</select>
+	
+	<update id="updateQaBoardQaReadCount" parameterType="int">
+	UPDATE BOARD_QA
+	SET QA_READCOUNT = QA_READCOUNT + 1
+	WHERE BOARD_QA_NO = #{ board_qa_no }
+	</update>
+	
+	<update id="updateQaBoardQaDeleted" parameterType="int">
+	UPDATE BOARD_QA
+	SET QA_DELETED = true
+	WHERE BOARD_QA_NO = #{ board_qa_no }
+	</update>
+	
+	<update id="updateQaBoard" parameterType="QuestionAnswerBoardVO">
+	UPDATE BOARD_QA
+	SET QA_TITLE = #{ qa_title }, QA_CONTENT = #{ qa_content }
+	WHERE BOARD_QA_NO = #{ board_qa_no }
+	</update>
+	
+</mapper>

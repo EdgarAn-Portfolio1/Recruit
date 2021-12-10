@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.recruit.mapper.FreeBoardMapper">
+	
+	<insert id="insertFreeBoard" parameterType="FreeBoardVO"
+			useGeneratedKeys="true" keyProperty="board_free_no" keyColumn="board_free_no">
+	INSERT INTO board_free (free_title, free_writer, free_content)
+	VALUES (#{ free_title }, #{ free_writer }, #{ free_content })
+	</insert>
+	
+	<select id="selectFreeAll" resultType="FreeBoardVO">
+	SELECT BOARD_FREE_NO, FREE_TITLE, FREE_WRITER, FREE_READCOUNT, FREE_DATE, FREE_DELETED
+	FROM BOARD_FREE
+	ORDER BY BOARD_FREE_NO DESC
+	</select>
+	
+	<select id="selectFreeBoardByFreeBoardNo" parameterType="int" resultType="FreeBoardVO">
+	SELECT BOARD_FREE_NO, FREE_TITLE, FREE_CONTENT, FREE_WRITER, FREE_DATE, FREE_READCOUNT
+	FROM BOARD_FREE
+	WHERE BOARD_FREE_NO = #{ board_free_no } AND FREE_DELETED = FALSE
+	</select>
+	
+	<update id="updateFreeBoardFreeReadCount" parameterType="int">
+	UPDATE BOARD_FREE
+	SET FREE_READCOUNT = FREE_READCOUNT + 1
+	WHERE BOARD_FREE_NO = #{ board_free_no }
+	</update>
+	
+	<update id="updateFreeBoardFreeDeleted" parameterType="int">
+	UPDATE BOARD_FREE
+	SET FREE_DELETED = true
+	WHERE BOARD_FREE_NO = #{ board_free_no }
+	</update>
+	
+	<update id="updateFreeBoard" parameterType="FreeBoardVO">
+	UPDATE BOARD_FREE
+	SET FREE_TITLE = #{ free_title }, FREE_CONTENT = #{ free_content }
+	WHERE BOARD_FREE_NO = #{ board_free_no }
+	</update>
+	
+	<select id="selectBoardCount" resultType="int">
+	SELECT COUNT(*)
+	FROM BOARD_FREE
+	</select>
+	
+	<select id="selectByRange" parameterType="hashmap" resultType="FreeBoardVO">
+	SELECT BOARD_FREE_NO, FREE_TITLE, FREE_WRITER, FREE_READCOUNT, FREE_DATE, FREE_DELETED
+	FROM BOARD_FREE
+	ORDER BY BOARD_FREE_NO DESC
+	LIMIT #{ from }, #{ cnt }
+	</select>
+	
+	<!-- ***************************************** -->
+	<insert id="insertFreeBoardAttach" parameterType="FreeBoardAttachVO">
+	INSERT INTO BOARD_FREE_ATTACH (BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME)
+	VALUES (#{ board_free_no }, #{ savedFileName }, #{ userFileName })
+	</insert>
+	
+</mapper>

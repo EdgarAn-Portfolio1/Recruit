@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace= "com.recruit.mapper.EnterprisesMapper">
+	
+  <!-- 리스트 데이터 조회 결과 코드 --> 
+  	<select id="selectEnterprises" parameterType="hashmap" resultType="EnterprisesVO">
+        select * from job
+        <where>
+        	<!-- <if test="duty !=null">
+        	duty = #{duty}
+        	</if> -->
+        	<if test="career !=null">
+        	and career = #{career}
+        	</if>
+        	<if test="degree !=null">
+        	and degree = #{degree}
+        	</if>
+        	<if test="work_place !=null">
+        	and work_place = #{work_place}
+        	</if>
+        </where>
+    </select>
+    
+ <!-- recruit_num으로 기업 데이터 조회 --> 
+  	<select id="selectEnterprisesLink" parameterType="hashmap" resultType="EnterprisesVO">   
+        select * from job
+        <where>
+        	
+        	<if test="recruit_num !=0">
+        	and recruit_num = #{recruit_num}
+        	</if>
+        	
+        </where>
+    </select>
+  
+  
+    
+    <!-- new_no으로 데이터 조회 --> 
+  	<select id="selectNews" parameterType="string" resultType="NewsVO">
+        select * from news
+        where title like concat('%', #{ companyName }, '%') or content like concat('%', #{ companyName }, '%') 
+        limit 4      
+    </select>
+    
+    <!--  좋아요 추가  -->
+    <!-- like_date는 전달인자로 받지 않습니다. -->
+    <insert id="like_register" parameterType="LikeVO">
+    	INSERT INTO LIKE_TABLE( MEMBERID,
+    							RECRUIT_NUM,
+    							LIKE_DATE
+    							
+    							)
+    				VALUES(		#{ memberId },
+    							#{ recruit_num},
+    							now())
+    									
+    	
+    
+    </insert>
+    <!--  좋아요  전체 카운트  -->
+    <select id ="selectLikeAllCount" parameterType="int" resultType="int">
+    select count(*) 
+    from like_table
+    where recruit_num = #{ recruit_num }
+    </select>
+
+    
+    <!--  좋아요 카운트 조회 -->
+    <select id="selectLikeCount" parameterType="LikeVO" resultType="int">
+    	SELECT COUNT(*) as cnt
+    	FROM LIKE_TABLE LT
+    	WHERE LT.RECRUIT_NUM = #{ recruit_num } and LT.MEMBERID = #{ memberId }
+    </select>
+    
+     <!--  좋아요 취소 -->
+    <delete id="like_delete" parameterType="LikeVO">
+    	delete from like_table
+    	where recruit_num= #{ recruit_num } and memberId = #{ memberId }
+    
+    </delete>
+    
+    
+   <!--  <select id="selectLikeVoteCountByRecruitNum" parameterType="hashmap" resultType="int">
+    SELECT COUNT(*)
+    FROM LIKE_TABLE
+    WHERE RECRUIT_NUM = #{ recruit_num }
+    </select> -->
+    
+    <!--  즐겨찾기 추가  -->
+    <insert id="bookmark_register" parameterType="BookMarkVO">
+    	INSERT INTO bookmark( MEMBERID,
+    							RECRUIT_NUM,
+    							BOOKMARK_DATE
+    							
+    							)
+    				VALUES(		#{ memberId },
+    							#{ recruit_num},
+    							now())			
+    	
+    
+    </insert>
+   
+    <!--  즐겨찾기 취소 -->
+    <delete id="bookmark_delete" parameterType="BookMarkVO">
+    	delete from bookmark
+    	where recruit_num= #{ recruit_num } and memberId = #{ memberId }
+    
+    </delete>
+ 
+    <!--  즐겨찾기 카운트 -->
+    <select id="selectBookmarkCount" parameterType="BookMarkVO" resultType="int">
+    	SELECT COUNT(*) as cnt
+    	FROM BOOKMARK BM
+    	WHERE BM.RECRUIT_NUM = #{ recruit_num } and BM.MEMBERID = #{ memberId }
+    </select>
+    
+    <!--  전체 즐겨찾기 카운트 -->
+     <select id ="selectBookmarkAllCount" parameterType="int" resultType="int">
+    select count(*) from bookmark
+    where recruit_num = #{ recruit_num }
+    </select>
+ 	
+  
+  	
+  	<!--  지역별 취업공고 차트 -->
+  	<select id="selectRecruitCountByWorkplace" parameterType="hashmap" resultType="GroupByWorkplaceVO">
+  	select work_place, count(*) as cnt 
+  	from job
+	group by work_place
+  	</select>
+  	
+   <select id="selectRecruitCountByDegree"  resultType="hashmap">
+  	select degree, count(*) as cnt from job
+  	group by degree
+  	</select>
+  	
+  	<select id="selectRecruitCountByWorkType" resultType="WorkTypeVO">
+  	select * from work_type
+  	
+  	</select>
+  	
+  </mapper>

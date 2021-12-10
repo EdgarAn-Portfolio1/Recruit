@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.recruit.mapper.NoticeBoardMapper">
+	
+	<insert id="insertNoticeBoard" parameterType="NoticeBoardVO">
+	INSERT INTO board_notice (notice_title, notice_writer, notice_content)
+	VALUES (#{ notice_title }, #{ notice_writer }, #{ notice_content })
+	</insert>
+	
+	<select id="selectNoticeAll" resultType="NoticeBoardVO">
+	SELECT BOARD_NOTICE_NO, NOTICE_TITLE, NOTICE_WRITER, NOTICE_READCOUNT, NOTICE_DATE, NOTICE_DELETED
+	FROM BOARD_NOTICE
+	ORDER BY BOARD_NOTICE_NO DESC
+	</select>
+	
+	<select id="selectNoticeBoardByNoticeBoardNo" parameterType="int" resultType="NoticeBoardVO">
+	SELECT BOARD_NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_WRITER, NOTICE_DATE, NOTICE_READCOUNT
+	FROM BOARD_NOTICE
+	WHERE BOARD_NOTICE_NO = #{ board_notice_no } AND NOTICE_DELETED = FALSE
+	</select>
+	
+	<update id="updateNoticeBoardNoticeReadCount" parameterType="int">
+	UPDATE BOARD_NOTICE
+	SET NOTICE_READCOUNT = NOTICE_READCOUNT + 1
+	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
+	</update>
+	
+	<update id="updateNoticeBoardNoticeDeleted" parameterType="int">
+	UPDATE BOARD_NOTICE
+	SET NOTICE_DELETED = true
+	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
+	</update>
+	
+	<update id="updateNoticeBoard" parameterType="NoticeBoardVO">
+	UPDATE BOARD_NOTICE
+	SET NOTICE_TITLE = #{ notice_title }, NOTICE_CONTENT = #{ notice_content }
+	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
+	</update>
+	
+</mapper>

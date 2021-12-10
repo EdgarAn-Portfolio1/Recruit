@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		   
+
+<mapper
+	namespace="com.recruit.mapper.BookMarkMapper">
+
+	<resultMap type="BookMarkVO" id="bookmarkResultMap">
+		<id column="recruit_num" property="recruit_num" />
+		<result column="memberId" property="memberId" />
+		<result column="bookmark_date" property="bookmark_date" />
+		<association property="enterprises" column="recruit_num" resultMap="enterprisesResultMap" />
+	</resultMap>
+	<resultMap id="enterprisesResultMap" type="EnterprisesVO">
+		<id column="recruit_num" property="recruit_num" />
+		<result column="company_name" property="company_name" />
+		<result column="career" property="career" />
+		<result column="duty" property="duty" />
+		<result column="duty" property="degree" />
+		<result column="work_place" property="work_place" />
+		<result column="work_type" property="work_type" />
+		<result column="category" property="category" />
+		<result column="category" property="recruit_link" />
+		<result column="enterprise_link" property="enterprise_link" />
+		<result column="company_name" property="resource" />
+	</resultMap>
+	<select id="selectBookMark" parameterType="String" resultMap="bookmarkResultMap">
+	SELECT *
+	FROM BOOKMARK B
+	INNER JOIN JOB J
+	ON B.recruit_num = J.recruit_num
+	WHERE B.MEMBERID = #{ memberId }
+	</select>
+	
+</mapper>

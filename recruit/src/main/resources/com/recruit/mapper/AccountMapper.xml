@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.recruit.mapper.AccountMapper">
+	<!-- 회원가입 -->
+	<insert id="insertAccount" parameterType="AccountVO">
+		INSERT INTO MEMBER(   MEMBERID
+	   					     , PASSWD 
+	   					     , EMAIL
+	   					  )
+	                 VALUES(    #{memberId} 
+	                  	      , #{passwd}
+	                 		  , #{email})
+    </insert>
+    
+    <!-- 로그인 -->
+    <select id="selectAccountByIdAndPasswd" parameterType="AccountVO" resultType="AccountVO">
+		SELECT MEMBERID, PASSWD
+		FROM MEMBER
+		WHERE MEMBERID = #{memberId}
+		AND PASSWD = #{passwd}   
+	</select>
+	
+	<select id="selectCountByMemberId" parameterType="string" resultType="int">
+		SELECT COUNT(MEMBERID)
+		FROM MEMBER
+		WHERE MEMBERID = #{memberId}
+	</select>
+    
+</mapper>

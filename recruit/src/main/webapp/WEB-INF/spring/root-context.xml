@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shakeit" />
+		<property name="username" value="root" />
+		<property name="password" value="mysql" />
+		<property name="minimumIdle" value="20" />
+		<property name="maximumPoolSize" value="100" />
+		<property name="connectionTimeout" value="10000" />
+	</bean>
+	
+   <!-- SqlSessionFactoryBean.getObject() -> SqlSessionFactory 객체를 만드는 설정 -->
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="hikariDataSource" />
+      <property name="configLocation" value="classpath:mybatis-config.xml" />
+   </bean>
+	
+   <!-- 생성자 파라미터 sqlSessionFactory를 사용해서 SqlSession을 만들고 SqlSession을 멤버로 갖는 SqlSessionTemplate 객체 생성하는 설정 -->
+   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactory" />
+   </bean>
+   
+	<context:component-scan base-package="com.recruit.service"></context:component-scan>
+	
+	<import resource="account-context.xml"/>
+	<import resource="admin-context.xml" />
+	<import resource="epilogueboard-context.xml"/>
+	<import resource="sharespecboard-context.xml"/>
+	<import resource="questionanswerboard-context.xml"/>
+	<import resource="noticeboard-context.xml"/>
+	<import resource="freeboard-context.xml"/>
+	<import resource="enterprises-context.xml"/>
+	<import resource="enterprisesInfo-context.xml"/>
+	<import resource="news-context.xml"/>
+	<import resource="myinfo-context.xml"/>
+	<import resource="bookmark-context.xml"/>
+	<import resource="books-context.xml"/>
+
+
+</beans>
