@@ -50,49 +50,44 @@
 										<form id="update-form" action="update" method="post">
 
 											<div class="form-group">
-												<br> <label>&nbsp;&nbsp;&nbsp;아이디</label> &nbsp;&nbsp;<input
+												<br> <label>아이디</label><input
 													class="form-control" id='memberId' name='memberId'
 													value='${ member.memberId }' readonly="readonly">
 											</div>
 
+																					
 											<div class="form-group">
-												<label>&nbsp;&nbsp;&nbsp;비밀번호</label> &nbsp;&nbsp;<input
+												<label>비밀번호</label><input
 													class="form-control" id='passwd' name='passwd'
 													type="password" value='${ member.passwd }'
 													readonly="readonly">
 											</div>
 
 											<div class="form-group">
-												<label>&nbsp;&nbsp;&nbsp;이메일</label> &nbsp;&nbsp;<input
+												<label>이메일</label><input
 													class="form-control" id='email' name='email'
 													value='${ member.email }'>
 											</div>
-
+											
 											<div class="form-group">
-												<label>&nbsp;&nbsp;&nbsp;사용자 구분</label> &nbsp;&nbsp;<input
-													class="form-control" id='userType' name='userType'
-													value='${ member.userType }'>
+												<label>사용자 구분</label>
+												<ul class="nav nav-pills mb-3">
+													<li class="nav-item">
+														<a href="#navpills-1" id="btn-user" class="nav-link${ member.userType eq 'user' ? ' active' : ''  }" data-toggle="tab" aria-expanded="false">
+														사용자</a></li>
+														<li class="nav-item">
+														<a href="#navpills-2" id="btn-admin" class="nav-link${ member.userType eq 'admin' ? ' active' : ''  }" data-toggle="tab" aria-expanded="false">
+														관리자</a>
+													</li>
+												</ul>
+												<input type="hidden" id="user-type" name="userType" value=${ member.userType }>
 											</div>
 
 											<div class="form-group">
-												<label>&nbsp;&nbsp;&nbsp;등록 일자</label> &nbsp;&nbsp;<input
-													class="form-control" id='regDate' name='regDate'
-													value='${ member.regDate }' readonly="readonly">
+												<label>등록 일자</label>
+												<input class="form-control" id='regDate' value='${ member.regDate }' readonly="readonly">
 											</div>
 
-											<div class="form-group">
-												<label>&nbsp;&nbsp;&nbsp;구직중</label> &nbsp;&nbsp;<input
-													class="form-control" id='active' name='active'
-													value='${ member.active }'>
-											</div>
-
-											<div class="form-group">
-												
-												&nbsp;&nbsp;<input type="checkbox" id='active' name='active'
-													${ member.active ? "checked" : "" }>활성 사용자 여부
-											</div>
-
-											&nbsp;&nbsp;&nbsp;
 											<button id="update-button" type="button"
 												class="btn mb-1 btn-primary">수정</button>
 											&nbsp;
@@ -114,19 +109,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	<!-- Begin Page Content -->
-
-	<!-- /.container-fluid -->
-
-	</div>
-	<!-- End of Main Content -->
-
-	</div>
-	<!-- End of Content Wrapper -->
-
-	</div>
-	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
@@ -140,13 +122,17 @@
 			$('#update-button').on('click', function(event) {
 
 				// 필요한 경우 입력 데이터 유효성 검사 수행
-
 				// <form id="update-form" ...> ... </form> 요소를 서버로 전송
+				
+				alert('수정하시겠습니까?');
 				$('#update-form').submit();
 
 			});
+			
 			$('#tolist-button').on('click', function(event) {
-				location.href = "adminpage";
+				
+				alert('목록으로 이동하시겠습니까?');
+				location.href = "adminPage";
 			});
 
 			$('#delete-button').on('click', function(event) {
@@ -155,6 +141,22 @@
 					location.href = "delete?memberId=${ member.memberId }";
 				}
 			});
+			
+			// user OR admin
+			$('#btn-user').on('click', function(event){
+				
+				alert("'사용자'로 변경하시겠습니까?");
+				$("#user-type").val("user");
+				
+			});
+			
+			$('#btn-admin').on('click', function(event){
+				
+				alert("'관리자'로 변경하시겠습니까?");
+				$("#user-type").val("admin");
+				
+			});
+			
 		});
 	</script>
 
