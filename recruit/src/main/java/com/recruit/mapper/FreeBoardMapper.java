@@ -29,6 +29,6 @@ public interface FreeBoardMapper {
 
 	void insertFreeBoardAttach(FreeBoardAttachVO attachment);
 
-	
+	FreeBoardAttachVO selectBoardFreeAttachByAttachFreeNo(int attach_free_no);
 
 }

@@ -19,21 +19,59 @@
 	ORDER BY BOARD_FREE_NO DESC
 	</select>
 	
-	<select id="selectFreeBoardByFreeBoardNo" parameterType="int" resultType="FreeBoardVO">
+	
+	<!-- 상세보기 조회 1 -->
+	<!-- <select id="selectFreeBoardByFreeBoardNo" parameterType="int" resultType="FreeBoardVO">
 	SELECT BOARD_FREE_NO, FREE_TITLE, FREE_CONTENT, FREE_WRITER, FREE_DATE, FREE_READCOUNT
 	FROM BOARD_FREE
 	WHERE BOARD_FREE_NO = #{ board_free_no } AND FREE_DELETED = FALSE
-	</select>
+	</select>  -->
 	
-	<update id="updateFreeBoardFreeReadCount" parameterType="int">
-	UPDATE BOARD_FREE
-	SET FREE_READCOUNT = FREE_READCOUNT + 1
-	WHERE BOARD_FREE_NO = #{ board_free_no }
-	</update>
+	<!-- 상세보기 조회 2 -->
+	<!-- 
+	<resultMap id="boardResultMap" type="FreeBoardVO">
+		<id column="BOARD_FREE_NO" property="board_free_no" />
+		<result column="FREE_TITLE" property="free_title" />
+		<result column="FREE_CONTENT" property="free_content" />
+		<result column="FREE_WRITER" property="free_writer" />
+		<result column="FREE_READCOUNT" property="free_readCount" />
+		<result column="FREE_DATE" property="free_date" />
+		<collection property="attachments" column="BOARD_FREE_NO" select="selectFreeBoardAttachByFreeBoardNo" />
+	</resultMap>	
+	<select id="selectFreeBoardByFreeBoardNo" parameterType="int" resultMap="boardResultMap">
+	SELECT FREE_BOARDNO, FREE_TITLE, FREE_CONTENT, FREE_WRITER, FREE_READCOUNT, FREE_DATE 
+	FROM BOARD_FREE
+	WHERE BOARD_FREE_NO = #{ board_free_no } AND DELETED = false 
+	</select>
+    -->
+ 	
+ 	<!-- 상세보기 조회 3 -->
+ 	<resultMap id="boardResultMap" type="FreeBoardVO">
+		<id column="BOARD_FREE_NO" property="board_free_no" />
+		<result column="FREE_TITLE" property="free_title" />
+		<result column="FREE_CONTENT" property="free_content" />
+		<result column="FREE_WRITER" property="free_writer" />
+		<result column="FREE_READCOUNT" property="free_readCount" />
+		<result column="FREE_DATE" property="free_Date" />
+		<collection property="attachments" column="BOARD_FREE_NO" resultMap="boardAttachResultMap" />
+	</resultMap>
+	<select id="selectFreeBoardByFreeBoardNo" parameterType="int" resultMap="boardResultMap">
+	SELECT B.BOARD_FREE_NO, B.FREE_TITLE, B.FREE_CONTENT, B.FREE_WRITER, B.FREE_READCOUNT, B.FREE_DATE, BA.ATTACH_FREE_NO, BA.SAVEDFILENAME, BA.USERFILENAME 
+	FROM BOARD_FREE B
+	LEFT OUTER JOIN BOARD_FREE_ATTACH BA
+	ON B.BOARD_FREE_NO = BA.BOARD_FREE_NO
+	WHERE B.BOARD_FREE_NO = #{ board_free_no } AND B.FREE_DELETED = false 
+	</select>
 	
 	<update id="updateFreeBoardFreeDeleted" parameterType="int">
 	UPDATE BOARD_FREE
 	SET FREE_DELETED = true
+	WHERE BOARD_FREE_NO = #{ board_free_no }
+	</update>
+	
+	<update id="updateFreeBoardFreeReadCount" parameterType="int">
+	UPDATE BOARD_FREE
+	SET FREE_READCOUNT = FREE_READCOUNT + 1
 	WHERE BOARD_FREE_NO = #{ board_free_no }
 	</update>
 	
@@ -43,6 +81,33 @@
 	WHERE BOARD_FREE_NO = #{ board_free_no }
 	</update>
 	
+	
+	
+	<!-- ***************************************** -->
+	<insert id="insertFreeBoardAttach" parameterType="FreeBoardAttachVO">
+	INSERT INTO BOARD_FREE_ATTACH (BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME)
+	VALUES (#{ board_free_no }, #{ savedFileName }, #{ userFileName })
+	</insert>
+	
+	<resultMap id="boardAttachResultMap" type="FreeBoardAttachVO">
+		<id column="ATTACH_FREE_NO" property="attach_free_no" />
+		<result column="BOARD_FREE_NO" property="board_free_no" />
+		<result column="SAVEDFILENAME" property="savedFileName" />
+		<result column="USERFILENAME" property="userFileName" />
+	</resultMap>
+	<select id="selectBoardFreeAttachByBoardFreeNo" parameterType="int" resultType="FreeBoardAttachVO">
+	SELECT ATTACH_FREE_NO, BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME
+	FROM BOARD_FREE_ATTACH
+	WHERE BOARDNO = #{ board_free_no }
+	</select>
+	
+	<select id="selectBoardFreeAttachByAttachFreeNo" parameterType="int" resultType="FreeBoardAttachVO">
+	SELECT ATTACH_FREE_NO, BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME
+	FROM BOARD_FREE_ATTACH
+	WHERE ATTACH_FREE_NO = #{ attach_free_no }
+	</select>
+	
+	<!-- 페이저 -->
 	<select id="selectBoardCount" resultType="int">
 	SELECT COUNT(*)
 	FROM BOARD_FREE
@@ -54,11 +119,6 @@
 	ORDER BY BOARD_FREE_NO DESC
 	LIMIT #{ from }, #{ cnt }
 	</select>
-	
-	<!-- ***************************************** -->
-	<insert id="insertFreeBoardAttach" parameterType="FreeBoardAttachVO">
-	INSERT INTO BOARD_FREE_ATTACH (BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME)
-	VALUES (#{ board_free_no }, #{ savedFileName }, #{ userFileName })
-	</insert>
+	<!-- 페이저 끝 -->
 	
 </mapper>

@@ -61,6 +61,14 @@
                                             <input class="form-control input-default" id="free_readsCount" name="free_readCount" value="${ frboard.free_readCount }">
                                         </div>
                                         
+                                        <div class="form-group">
+											<label>첨부파일</label>
+											<c:forEach var="attachment" items="${ frboard.attachments }"> 
+											<br>
+											<a id='attachment' href="download?attach_free_no=${ attachment.attach_free_no }">${ attachment.userFileName }</a>
+											</c:forEach>
+										</div>
+                                        
                                         <c:choose>
 											<c:when test="${ loginuser.memberId == frboard.free_writer }">
 												<a id="edit-button" type="button" class="btn btn-success" style="color:white">수정</a>

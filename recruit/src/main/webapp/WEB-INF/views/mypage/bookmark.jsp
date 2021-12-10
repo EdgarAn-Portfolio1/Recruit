@@ -26,28 +26,25 @@
 		<!-- row -->
 
 		<div class="container-fluid">
-
-			<!-- End Row -->
-			<div class="row">
+			<div>
 				<div class="col-12">
 					<h4 class="d-inline">즐겨찾기 목록</h4>
 					<p></p>
-					<div class="row" style="margin:auto;">
+					<div class="row" >
 						<c:forEach var="bookmark" items = "${ bookmarks }">
-						<div class="col-lg-3">
-							<div class="card h-100">
-								<div class="card-header">${ bookmark.enterprises.company_name }</div>
-								<div class="card-body">
-									<p class="card-title">${ bookmark.enterprises.duty }</p>
-									<p class="card-text">${ bookmark.enterprises.career }</p>
-									<p class="card-text">${ bookmark.enterprises.work_type }</p>
-									<p class="card-text">${ bookmark.enterprises.degree }</p>
-									<p class="card-text">${ bookmark.enterprises.work_place }</p>
-									<button class="btn btn-primary todetail-button" data-recruit-num="${ bookmark.recruit_num }">상세보기</button>
-								</div>
-							</div>
-						</div>
-						<br>
+						<div class="col-sm-6 col-lg-3">
+	                                <div class="card text-center">
+	                                	<h5 class="card-header" style="text:border;">${ bookmark.enterprises.company_name }</h5>
+	                                    <div class="card-body">
+											<p class="card-title">${ bookmark.enterprises.duty }</p>
+											<p class="card-text">${ bookmark.enterprises.career }</p>
+											<p class="card-text">${ bookmark.enterprises.work_type }</p>
+											<p class="card-text">${ bookmark.enterprises.degree }</p>
+											<p class="card-text">${ bookmark.enterprises.work_place }</p>
+											<button class="btn btn-primary todetail-button" data-recruit-num="${ bookmark.recruit_num }">상세보기</button>
+										</div>
+	                                </div>
+	                    </div>
 						</c:forEach>
 					</div>
 				</div>

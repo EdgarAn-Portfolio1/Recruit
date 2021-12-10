@@ -78,6 +78,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return freeBoardMapper.selectBoardCount();
 	}
 
+	@Override
+	public FreeBoardAttachVO findBoardFreeAttachByAttachFreeNo(int attach_free_no) {
+		return freeBoardMapper.selectBoardFreeAttachByAttachFreeNo(attach_free_no);
+	}
+
 
 
 }

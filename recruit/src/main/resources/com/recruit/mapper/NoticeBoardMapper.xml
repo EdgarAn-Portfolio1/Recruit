@@ -7,7 +7,8 @@
 <mapper
 	namespace="com.recruit.mapper.NoticeBoardMapper">
 	
-	<insert id="insertNoticeBoard" parameterType="NoticeBoardVO">
+	<insert id="insertNoticeBoard" parameterType="NoticeBoardVO"
+			useGeneratedKeys="true" keyProperty="board_notice_no" keyColumn="board_notice_no">
 	INSERT INTO board_notice (notice_title, notice_writer, notice_content)
 	VALUES (#{ notice_title }, #{ notice_writer }, #{ notice_content })
 	</insert>
@@ -41,5 +42,25 @@
 	SET NOTICE_TITLE = #{ notice_title }, NOTICE_CONTENT = #{ notice_content }
 	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
 	</update>
+	
+	<!-- 페이저 -->
+	<select id="selectBoardCount" resultType="int">
+	SELECT COUNT(*)
+	FROM BOARD_NOTICE
+	</select>
+	
+	<select id="selectByRange" parameterType="hashmap" resultType="NoticeBoardVO">
+	SELECT BOARD_NOTICE_NO, NOTICE_TITLE, NOTICE_WRITER, NOTICE_READCOUNT, NOTICE_DATE, NOTICE_DELETED
+	FROM BOARD_NOTICE
+	ORDER BY BOARD_NOTICE_NO DESC
+	LIMIT #{ from }, #{ cnt }
+	</select>
+	<!-- 페이저 끝 -->
+	
+	<!-- ***************************************** -->
+	<insert id="insertNoticeBoardAttach" parameterType="NoticeBoardAttachVO">
+	INSERT INTO BOARD_NOTICE_ATTACH (BOARD_NOTICE_NO, SAVEDFILENAME, USERFILENAME)
+	VALUES (#{ board_notice_no }, #{ savedFileName }, #{ userFileName })
+	</insert>
 	
 </mapper>

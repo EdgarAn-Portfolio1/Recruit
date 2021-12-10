@@ -1,6 +1,8 @@
 package com.recruit.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -15,4 +17,9 @@ public class NoticeBoardVO {
 	private boolean notice_deleted;
 	private Date notice_Date;
 	
-}
+	// NoticeBoardVO와 NoticeBoardAttachVO 사이의 1:Many 관계를 표현하는 필드 
+	private List<NoticeBoardAttachVO> attachments;
+		
+	}
+	
+
