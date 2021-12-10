@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.recruit.common.Util;
 import com.recruit.service.FreeBoardService;
-import com.recruit.ui.FreeBoardPager;
+import com.recruit.ui.BoardPager;
+import com.recruit.view.DownloadView;
 import com.recruit.vo.AccountVO;
 import com.recruit.vo.FreeBoardAttachVO;
 import com.recruit.vo.FreeBoardVO;
@@ -58,7 +61,7 @@ public class FreeBoardController {
 		
 		count = FreeBoardService.findBoardCount();
 		
-		FreeBoardPager pager = new FreeBoardPager(count, pageNo, pageSize, pagerSize, "frlist");
+		BoardPager pager = new BoardPager(count, pageNo, pageSize, pagerSize, "frlist");
 		
 		// View에서 사용할 수 있도록 Model 타입의 전달인자에 저장 -> Request 객체에 저장
 		model.addAttribute("frboards", frboards);
@@ -95,7 +98,7 @@ public class FreeBoardController {
 		if (mf != null) {
 			
 			ServletContext application = req.getServletContext();
-			String path = application.getRealPath("/resources/upload-files"); // web-path --> computer-path
+			String path = application.getRealPath("/resources/upload-files-free"); // web-path --> computer-path
 			
 			String userFileName = mf.getOriginalFilename();
 			if (userFileName.contains("\\")) { // iexplore 경우
@@ -179,6 +182,24 @@ public class FreeBoardController {
 		FreeBoardService.frupdateFreeBoard(frboard);
 		
 		return "redirect:frdetail?board_free_no=" + frboard.getBoard_free_no();
+	}
+	
+	@GetMapping(path = { "/download" })
+	public View download(@RequestParam(defaultValue = "-1") int attach_free_no, Model model) {
+		if (attach_free_no == -1) {
+			// return "redirect:list";
+			return new RedirectView("frlist");
+		}
+		
+		FreeBoardAttachVO attachment = FreeBoardService.findBoardFreeAttachByAttachFreeNo(attach_free_no);
+		if (attachment == null) {
+			return new RedirectView("frlist");
+		}
+		model.addAttribute("attachment", attachment);
+		
+		// return "view-name or response content with @ResponseBody";
+		DownloadView view = new DownloadView();
+		return view;
 	}
 	
 }

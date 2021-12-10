@@ -31,7 +31,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">공지사항 글쓰기</h4>
                                 <div class="basic-form">
-                                    <form id="noboard-write-form" action="nowrite" method="post">
+                                    <form id="noboard-write-form" action="nowrite" method="post" enctype="multipart/form-data">
                                     	<br>
                                         <div class="form-group">
                                         	<label>제목</label>
@@ -41,6 +41,10 @@
                                         	<label>작성자</label>
                                             <input type="text" class="form-control input-default" name="notice_writer" value="${ loginuser.memberId }">
                                         </div>
+                                        <div class="form-group">
+                             				<label>첨부파일</label>
+                             				<input type="file" class="form-control input-default" name="attachment" multiple>
+                             			</div>
                                         <div class="form-group">
                                         	<label>내용</label>
                                             <input type="text" class="form-control input-default" placeholder="내용을 입력하세요." name="notice_content" style="height:200px;">

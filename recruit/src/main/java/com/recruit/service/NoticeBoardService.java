@@ -6,9 +6,9 @@ import com.recruit.vo.NoticeBoardVO;
 
 public interface NoticeBoardService {
 
-	int nowriteBoard(NoticeBoardVO noboard);
-	
 	List<NoticeBoardVO> findNoticeAll();
+	
+	int nowriteBoard(NoticeBoardVO noboard);
 
 	NoticeBoardVO findNoticeBoardByboard_notice_no(int board_notice_no);
 
@@ -17,5 +17,9 @@ public interface NoticeBoardService {
 	void deleteNoticeBoard(int board_notice_no);
 
 	void noupdateNoticeBoard(NoticeBoardVO noboard);
+
+	List<NoticeBoardVO> findByPage(int pageNo, int pageSize);
+
+	int findBoardCount();
 
 }

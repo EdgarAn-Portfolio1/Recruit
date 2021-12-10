@@ -2,6 +2,7 @@ package com.recruit.service;
 
 import java.util.List;
 
+import com.recruit.vo.FreeBoardAttachVO;
 import com.recruit.vo.FreeBoardVO;
 
 public interface FreeBoardService {
@@ -21,5 +22,7 @@ public interface FreeBoardService {
 	List<FreeBoardVO> findByPage(int pageNo, int pageSize);
 
 	int findBoardCount();
+
+	FreeBoardAttachVO findBoardFreeAttachByAttachFreeNo(int attach_free_no);
 
 }

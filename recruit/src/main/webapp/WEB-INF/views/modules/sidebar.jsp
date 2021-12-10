@@ -30,11 +30,9 @@
                             <i class="icon-notebook menu-icon"></i><span class="nav-text">마이페이지</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/recruit/mypage/CV">자기소개서 관리</a></li>
                             <li><a href="/recruit/mypage/myInfo">내 정보 관리</a></li>
                             <!-- <li><a href="/recruit/mypage/myInfo">내 정보 관리</a></li> -->
                             <li><a href="/recruit/mypage/bookmark">즐겨찾기</a></li>
-                            <li><a href="/recruit/mypage/record">열람 기업 이력</a></li>
                             <li><a href="/recruit/mypage/smartMatch">스마트매치</a></li>
                         </ul>
                     </li>

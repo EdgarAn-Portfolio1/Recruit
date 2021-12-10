@@ -67,6 +67,10 @@
 									</tbody>
 								</table>
 							</div>
+							<br>
+							<div style="text-align:center">
+							${ pager }
+							</div>
 						</div>
 					</div>
 				</div>
