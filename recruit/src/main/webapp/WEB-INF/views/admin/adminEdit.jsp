@@ -136,7 +136,7 @@
 			});
 
 			$('#delete-button').on('click', function(event) {
-				var yes = confirm('${ member.memberId }번 회원을 삭제하겠습니까?');
+				var yes = confirm('${ member.memberId } 회원을 삭제하겠습니까?');
 				if (yes) {
 					location.href = "delete?memberId=${ member.memberId }";
 				}
