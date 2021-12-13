@@ -27,5 +27,18 @@
 		FROM member
 		WHERE memberID = #{memberId}
 	</select>
+	
+	<select id="searchMemberId" parameterType="string" resultType="String">
+		SELECT MEMBERID
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<select id="searchPasswd" parameterType="hashmap" resultType="String">
+		SELECT PASSWD
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+		AND MEMBERID = #{memberId}
+	</select>
     
 </mapper>

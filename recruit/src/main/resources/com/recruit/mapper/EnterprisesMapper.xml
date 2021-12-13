@@ -138,8 +138,14 @@
   	</select>
   	
   	<select id="selectRecruitCountByWorkType" resultType="WorkTypeVO">
-  	select * from work_type
-  	
+  	select * from work_type  	
   	</select>
+  	
+  	<select id ="selectIncomeComparison" resultType="IncomeAndWelfareVO">
+  	select * from income_welfare
+  	order by income desc 
+  	limit 10
+  	</select>
+  	
   	
   </mapper>
