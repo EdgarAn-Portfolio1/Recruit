@@ -74,7 +74,7 @@ public class AccountController {
 		
 		if(selectedAccountVo != null) {
 			session.setAttribute("loginuser", selectedAccountVo);
-			return "home";
+			return "redirect:/home";
 		} else {
 			return "redirect:/account/login?loginfail=true";
 		}
