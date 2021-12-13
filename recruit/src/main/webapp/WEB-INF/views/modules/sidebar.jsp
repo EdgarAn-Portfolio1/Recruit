@@ -88,16 +88,18 @@
                         </ul>
                     </li>
                     
-                     <li class="nav-label">ADMIN</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i><span class="nav-text">관리자페이지</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/recruit/admin/adminPage">회원정보관리</a></li>
-                           
-                        </ul>
-                    </li>
+                    <c:if test="${ not empty loginuser and loginuser.userType eq 'admin' }">
+	                	<li class="nav-label">ADMIN</li>
+	                	<li>
+	                    	<a class="has-arrow" href="javascript:void()" aria-expanded="false">
+	                        	<i class="icon-envelope menu-icon"></i><span class="nav-text">관리자페이지</span>
+	                        </a>
+	                    	<ul aria-expanded="false">
+	                        	<li><a href="/recruit/admin/adminPage">회원정보관리</a></li>
+	                    	</ul>
+	                	</li>                    	
+                   </c:if>
+                   
                     <c:choose>
                     	<c:when test="${ not empty loginuser }">
                     		<li><a href="/recruit/account/logout">로그아웃</a></li>

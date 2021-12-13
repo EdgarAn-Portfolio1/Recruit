@@ -56,6 +56,8 @@ public class AdminController {
 	@PostMapping(path = { "/update" })
 	public String update(AccountVO account) {
 		
+		// System.out.println("a:" + account);
+		
 		adminService.updateMember(account);
 		
 		return "redirect:adminEdit?memberId=" + account.getMemberId();

@@ -16,7 +16,7 @@
     
     <!-- 로그인 -->
     <select id="selectAccountByIdAndPasswd" parameterType="AccountVO" resultType="AccountVO">
-		SELECT MEMBERID, PASSWD
+		SELECT MEMBERID, EMAIL, USERTYPE, REGDATE
 		FROM MEMBER
 		WHERE MEMBERID = #{memberId}
 		AND PASSWD = #{passwd}   
