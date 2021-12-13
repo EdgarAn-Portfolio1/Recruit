@@ -9,9 +9,9 @@
 	  <typeAlias type="com.recruit.vo.AccountVO" alias="AccountVO" />
       <typeAlias type="com.recruit.vo.EpilogueBoardVO" alias="EpilogueBoardVO" />
       <typeAlias type="com.recruit.vo.NoticeBoardVO" alias="NoticeBoardVO" />
+      <typeAlias type="com.recruit.vo.NoticeBoardAttachVO" alias="NoticeBoardAttachVO" />
       <typeAlias type="com.recruit.vo.FreeBoardVO" alias="FreeBoardVO" />
       <typeAlias type="com.recruit.vo.FreeBoardAttachVO" alias="FreeBoardAttachVO" />
-      <typeAlias type="com.recruit.vo.NoticeBoardAttachVO" alias="NoticeBoardAttachVO" />
       <typeAlias type="com.recruit.vo.QuestionAnswerBoardVO" alias="QuestionAnswerBoardVO" />
       <typeAlias type="com.recruit.vo.SharespecBoardVO" alias="SharespecBoardVO" />
       <typeAlias type="com.recruit.vo.EnterprisesVO" alias="EnterprisesVO" />

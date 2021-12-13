@@ -83,4 +83,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return noticeBoardMapper.selectBoardCount();
 	}
 
+	@Override
+	public NoticeBoardAttachVO findBoardNoticeAttachByAttachNoticeNo(int attach_notice_no) {
+		return noticeBoardMapper.selectBoardNoticeAttachByAttachNoticeNo(attach_notice_no);
+	}
+
 }

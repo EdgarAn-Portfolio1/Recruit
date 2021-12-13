@@ -98,7 +98,7 @@
 	<select id="selectBoardFreeAttachByBoardFreeNo" parameterType="int" resultType="FreeBoardAttachVO">
 	SELECT ATTACH_FREE_NO, BOARD_FREE_NO, SAVEDFILENAME, USERFILENAME
 	FROM BOARD_FREE_ATTACH
-	WHERE BOARDNO = #{ board_free_no }
+	WHERE BOARD_FREE_NO = #{ board_free_no }
 	</select>
 	
 	<select id="selectBoardFreeAttachByAttachFreeNo" parameterType="int" resultType="FreeBoardAttachVO">

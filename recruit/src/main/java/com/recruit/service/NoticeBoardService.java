@@ -2,6 +2,7 @@ package com.recruit.service;
 
 import java.util.List;
 
+import com.recruit.vo.NoticeBoardAttachVO;
 import com.recruit.vo.NoticeBoardVO;
 
 public interface NoticeBoardService {
@@ -21,5 +22,7 @@ public interface NoticeBoardService {
 	List<NoticeBoardVO> findByPage(int pageNo, int pageSize);
 
 	int findBoardCount();
+
+	NoticeBoardAttachVO findBoardNoticeAttachByAttachNoticeNo(int attach_notice_no);
 
 }

@@ -61,6 +61,14 @@
                                             <input class="form-control input-default" id="notice_readsCount" name="notice_readCount" value="${ noboard.notice_readCount }">
                                         </div>
                                         
+                                        <%-- <div class="form-group">
+											<label>첨부파일</label>
+											<c:forEach var="attachment" items="${ noboard.attachments }"> 
+											<br>
+											<a id='attachment' href="nodownload?attach_notice_no=${ attachment.attach_notice_no }">${ attachment.userFileName }</a>
+											</c:forEach>
+										</div> --%>
+                                        
                                         <c:choose>
 											<c:when test="${ loginuser.memberId == noboard.notice_writer }">
 												<a id="edit-button" type="button" class="btn btn-success" style="color:white">수정</a>
