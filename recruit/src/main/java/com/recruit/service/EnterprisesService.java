@@ -7,8 +7,7 @@ import java.util.List;
 import com.recruit.vo.BookMarkVO;
 import com.recruit.vo.EnterprisesVO;
 import com.recruit.vo.GroupByWorkplaceVO;
-
-
+import com.recruit.vo.IncomeAndWelfareVO;
 import com.recruit.vo.LikeVO;
 import com.recruit.vo.NewsVO;
 import com.recruit.vo.WorkTypeVO;
@@ -53,6 +52,8 @@ public interface EnterprisesService {
 	List<HashMap<String, Object>> selectRecruitCountByDegree();
 
 	List<WorkTypeVO> selectRecruitCountByWorkType();
+
+	List<IncomeAndWelfareVO> selectIncomeComparison();
 
 	
 

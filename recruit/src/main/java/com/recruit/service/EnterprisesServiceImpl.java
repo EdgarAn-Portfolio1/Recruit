@@ -8,7 +8,7 @@ import com.recruit.mapper.EnterprisesMapper;
 import com.recruit.vo.BookMarkVO;
 import com.recruit.vo.EnterprisesVO;
 import com.recruit.vo.GroupByWorkplaceVO;
-
+import com.recruit.vo.IncomeAndWelfareVO;
 import com.recruit.vo.LikeVO;
 import com.recruit.vo.NewsVO;
 import com.recruit.vo.WorkTypeVO;
@@ -138,6 +138,12 @@ public class EnterprisesServiceImpl implements EnterprisesService{
 	public List<WorkTypeVO> selectRecruitCountByWorkType() {
 		
 		return enterprisesMapper.selectRecruitCountByWorkType();
+	}
+
+	@Override
+	public List<IncomeAndWelfareVO> selectIncomeComparison() {
+		
+		return enterprisesMapper.selectIncomeComparison();
 	}
 
 
