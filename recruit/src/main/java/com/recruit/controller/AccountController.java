@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -88,6 +89,43 @@ public class AccountController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	
+	///////////////////////////////////////////////////////////////////////
+	
+	// 아이디 찾기
+	@GetMapping(path = { "/searchId" })
+	public String searchId(String email, Model model) {
+		
+		return "account/searchId";
+		
+	}
+	
+	@GetMapping(value="/findId")
+	@ResponseBody
+	public String findId(String email, Model model) throws Exception{
+		
+		String searchId = service.searchId(email);
+		
+		return searchId;
+	}
+	
+	
+	// 비밀번호 찾기
+	@GetMapping(path = { "/searchPasswd" })
+	public String searchPasswd() {
+
+		return "account/searchPasswd";
+	}
+	
+	@GetMapping(value="/findPasswd")
+	@ResponseBody
+	public String findPasswd(String email, String memberId, Model model) throws Exception{
+		// System.out.println(email + "/" + memberId);
+		String searchPasswd = service.searchPasswd(email, memberId);
+		
+		return searchPasswd;
 	}
 	
 

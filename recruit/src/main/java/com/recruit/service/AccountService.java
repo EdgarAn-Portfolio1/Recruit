@@ -8,6 +8,10 @@ public interface AccountService{
 	
 	public AccountVO login(AccountVO account) throws Exception;
 
-	 boolean checkId(String memberId); 
+	boolean checkId(String memberId); 
+	
+	public String searchId(String email);
+	
+	public String searchPasswd(String email, String memberId);
 	
 }
