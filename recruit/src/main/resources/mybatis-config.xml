@@ -23,6 +23,7 @@
 	  <typeAlias type="com.recruit.vo.MyInfoVO" alias="MyInfoVO" />
 	  <typeAlias type="com.recruit.vo.WorkTypeVO" alias="WorkTypeVO" />	
 	  <typeAlias type="com.recruit.vo.BooksVO" alias="BooksVO" />
+	  <typeAlias type="com.recruit.vo.IncomeAndWelfareVO" alias="IncomeAndWelfareVO" />
    </typeAliases>
    
    <mappers>

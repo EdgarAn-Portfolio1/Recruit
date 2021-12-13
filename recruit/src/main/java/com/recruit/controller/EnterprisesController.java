@@ -22,6 +22,7 @@ import com.recruit.vo.AccountVO;
 import com.recruit.vo.BookMarkVO;
 import com.recruit.vo.EnterprisesVO;
 import com.recruit.vo.GroupByWorkplaceVO;
+import com.recruit.vo.IncomeAndWelfareVO;
 import com.recruit.vo.LikeVO;
 import com.recruit.vo.NewsVO;
 import com.recruit.vo.WorkTypeVO;
@@ -168,16 +169,18 @@ public class EnterprisesController {
 
 		List<GroupByWorkplaceVO> recruitCountByWorkplace = enterprisesService.selectRecruitCountByWorkplace(param);
 		List<WorkTypeVO> recruitCountByWorkType = enterprisesService.selectRecruitCountByWorkType();
-		
+		List<IncomeAndWelfareVO> incomeComparison = enterprisesService.selectIncomeComparison();
 		
 		
 		
 		model.addAttribute("degree", degree);
 		model.addAttribute("recruitCountByWorkType", recruitCountByWorkType);
 		model.addAttribute("recruitCountByWorkplace", recruitCountByWorkplace);
+		model.addAttribute("incomeComparison", incomeComparison);
 		System.out.println(recruitCountByWorkplace);
 		System.out.println(degree);
 		System.out.println(recruitCountByWorkType);
+		System.out.println(incomeComparison);
 		
 		return "enterprises/recruitChart";
 
