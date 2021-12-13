@@ -43,6 +43,20 @@
                                         	<label>작성자</label>
                                             <input class="form-control input-default" id="free_writer" name="free_writer" value="${ frboard.free_writer }">
                                         </div>
+                                        
+                                         <div class="form-group">
+                             				<label>첨부파일</label>
+                             				<input type="file" class="form-control input-default" name="attachment" multiple>
+                             			</div>
+                                        
+                                        <%-- <div class="form-group">
+											<label>첨부파일</label>
+											<c:forEach var="attachment" items="${ frboard.attachments }"> 
+											<br>
+											<a id='attachment' href="download?attach_free_no=${ attachment.attach_free_no }">${ attachment.userFileName }</a>
+											</c:forEach>
+										</div> --%>
+                                        
                                         <div class="form-group">
                                         	<label>내용</label>
                                             <input class="form-control input-default" id="free_content" name="free_content" style="height:180px;" value="${ frboard.free_content }">

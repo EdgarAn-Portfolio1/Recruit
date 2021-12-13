@@ -63,8 +63,23 @@
 												placeholder="비밀번호">
 										</div>
 										<button class="btn login-form__btn submit w-100">로그인</button>
-										<p class="mt-5 login-form__footer">
-										계정이 없으신가요? <a href="register" class="text-primary"> 여기</a>를 눌러 회원가입하세요.</p>
+										
+										
+											
+										<div style="margin-top: 20px">
+											
+											<button id="search-id-button" type="button"
+												class="btn mb-1 btn-outline-primary btn-sm"
+												style="float: left; margin-right:5px">아이디찾기</button>
+												
+											<button id="search-passwd-button" type="button"
+												class="btn mb-1  btn-outline-primary btn-sm"
+												style="float: left">비밀번호찾기</button>
+											
+											<button id="register-button" type="button"
+												class="btn mb-1 btn-outline-primary btn-sm"
+												style="float: right">회원가입</button>
+										</div>
 								</form>
 							</div>
                         </div>
@@ -81,14 +96,22 @@
     <!--**********************************
         Scripts
     ***********************************-->
+	<script type="text/javascript">
+		$(function(){
+			$('#register-button').on('click', function(event){
+				location.href = "register";
+			});
+			
+			$('#search-id-button').on('click', function(event) {
+				location.href = "searchId";
+			});
+			
+			$('#search-passwd-button').on('click', function(event){
+				location.href = "searchPasswd";
+			});
+		});
+	</script>
 
-<!-- 	<script type="text/javascript">
-    $(function() {
-    	if (${ not empty param.loginfail }) {
-    		alert('로그인 실패');
-    	}
-    });
-    </script> -->
 	<script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>

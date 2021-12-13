@@ -114,12 +114,8 @@
 									</table>
 									<div style="text-align: center">
 
-										<a href="${ enterprisesLink.recruit_link }"
-											class="btn btn-primary recruit_link_a"
-											onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">채용정보</a>
-										<a href="${ enterprisesLink.enterprises_link }"
-											class="btn btn-primary enterprises_link_a"
-											onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">기업정보</a>
+										<a href="${ enterprisesLink.recruit_link }"class="btn btn-primary recruit_link_a">채용정보</a>
+										<a href="${ enterprisesLink.enterprises_link }"class="btn btn-primary enterprises_link_a">기업정보</a>
 									</div>
 								</div>
 
@@ -142,7 +138,7 @@
 	                                        
 	                                        <div class="card-footer">
 	                                        	<p class="card-text d-inline"><small class="text-muted">${ news.date }</small></p>
-		                                        <a href="${ news.link }" class="card-link float-right" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"><small>바로가기</small></a>
+		                                        <a href="${ news.link }" class="card-link float-right"><small>바로가기</small></a>
 		                                    </div>
 	                                        
 	                                    </div>
