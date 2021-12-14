@@ -79,34 +79,34 @@
 										<tbody>
 											<tr>
 												<th>산업</th>
-												<td>asdfasdf</td>
+												<td></td>
 												<th>사원수</th>
-												<td>@jacklyn</td>
+												<td></td>
 											</tr>
 
 											<tr>
 												<th>기업구분</th>
-												<td>Jacklyn</td>
+												<td></td>
 												<th>설립일</th>
-												<td>@jacklyn</td>
+												<td></td>
 											</tr>
 											<tr>
 												<th>자본금</th>
-												<td>Jacklyn</td>
+												<td></td>
 												<th>매출액</th>
-												<td>@jacklyn</td>
+												<td></td>
 											</tr>
 											<tr>
 												<th>대표자</th>
-												<td>Jacklyn</td>
+												<td></td>
 												<th>주요사업</th>
-												<td>@jacklyn</td>
+												<td></td>
 											</tr>
 											<tr>
 												<th>4대보험</th>
-												<td>Jacklyn</td>
+												<td></td>
 												<th>주소</th>
-												<td>@jacklyn</td>
+												<td></td>
 											</tr>
 
 										</tbody>
