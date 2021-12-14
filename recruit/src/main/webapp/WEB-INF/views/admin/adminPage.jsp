@@ -41,7 +41,6 @@
 											<th>이메일</th>
 											<th>사용자구분</th>
 											<th>등록일자</th>
-											<th>구직상태</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -53,7 +52,6 @@
 												<td>${ member.email }</td>
 												<td>${ member.userType }</td>
 												<td>${ member.regDate }</td>
-												<td>${ member.active }</td>
 											</tr>
 										</c:forEach>
 									</tbody>
