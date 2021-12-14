@@ -66,7 +66,6 @@
                                     <div class="form-group">
                                         <input type="text" name="email" id="email" class="form-control" placeholder="이메일" required>
                                     </div>
-                                    <div class="alert alert-danger" id="email-alert-danger">이메일 형식 오류</div>
                                     
                                     <button class="btn login-form__btn submit w-100" id="do-submit">회원가입</button>
                                 </form>
@@ -92,7 +91,6 @@
 	$(function(){ 
 		
 		$("#pwd-alert-danger").hide();
-		$("#email-alert-danger").hide();
 
 		$("#pwd1,#pwd2").keyup(function(){
 			
@@ -121,17 +119,7 @@
 				}
 			}
 		});
-		
-		
-		$("#email").keyup(function(){
-			var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
-			var email = $('#email').val();
-			if ( !emailRule.test(email) ) {
-				$("#email-alert-danger").show();
-			} else {
-				$("#email-alert-danger").hide();
-			}
-		});
+
 	});
 
 	
@@ -183,6 +171,7 @@
 		$('#do-submit').on('click', function(event) {
 			
 			event.preventDefault(); // 제대로 입력안할 시 페이지 안넘어가게 */
+			event.stopPropagation();
 			
 			var checkId = $('#checkedId').val();
 			if (!checkId) { // 중복 검사를 실행하지 않은 경우
@@ -195,6 +184,26 @@
 				$('#checkedId').val("");
 				return;
 			}
+			
+			var pwd1 = $('#pwd1').val();
+			if(!pwd1){
+				alert('비밀번호란이 비어있습니다. 입력해주시길 바랍니다.');
+				return;
+			}
+			
+			var pwd2 = $('#pwd2').val();
+			if(!pwd2){
+				alert('비밀번호 확인란이 비어있습니다. 입력해주시길 바랍니다.');
+				return;
+			}
+			
+			var email = $('#email').val();
+			var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
+			if(!emailRule.test(email)){
+				alert('이메일의 형식이 올바르지 않습니다. 다시 입력해주세요.');
+				return;
+			}
+			
 			
 			$('#registerform').submit(); // form을 서버로 전송
 		});
