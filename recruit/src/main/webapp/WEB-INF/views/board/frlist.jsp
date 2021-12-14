@@ -51,7 +51,8 @@
 											<td>
 													<c:choose>
 		                                            	<c:when test="${ not board_free.free_deleted }" >
-		                                            	<a href="frdetail?board_free_no=${ board_free.board_free_no }&pageNo=${ pageNo }">${ board_free.free_title }</a>
+		                                            	<a href="frdetail?board_free_no=${ board_free.board_free_no }&pageNo=${ pageNo }">
+		                                            		${ board_free.free_title }</a>
 		                                            	</c:when>
 		                                            	<c:otherwise>
 		                                            	<span style="color:lightgray">${ board_free.free_title } [삭제된 글]</span>

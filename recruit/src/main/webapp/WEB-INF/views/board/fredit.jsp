@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +46,13 @@
                                         
                                          <div class="form-group">
                              				<label>첨부파일</label>
+                             				<br >
+                             				<c:forEach var="attachment" items="${ frboard.attachments }"> 
+											
+											<a id='attachment' href="download?attach_free_no=${ attachment.attach_free_no }">${ attachment.userFileName }</a>
+											&nbsp;&nbsp; <a href="delete-attach?attach_free_no=${ attachment.attach_free_no }">삭제</a>
+											<br>
+											</c:forEach>
                              				<input type="file" class="form-control input-default" name="attachment" multiple>
                              			</div>
                                         
