@@ -152,16 +152,23 @@
            	         	
            	       <!--즐겨찾기-->  		
        				<div class="row row-col-1 row-cols-md-2 g-8">
-       	
-           		        <div class="col">
-           	         		<div class="card">
-             	        	   <div class="card-body">
-    	                    	   <h5 class="card-title">기업 이름</h5>
-       		                    		<p class="card-text">기업 정보</p><a href="#" class="btn btn-primary">공고 보기</a>
-        	                   </div>
-           		          	</div>
-           		        </div>
-           		         
+       				
+       					<c:forEach var="bookmark" items = "${ bookmarks }">
+						<div class="col-lg-6 col-lg-3">
+	                                <div class="card text-center">
+	                                	<h5 class="card-header" style="text:border;">${ bookmark.enterprises.company_name }</h5>
+	                                    <div class="card-body">
+											<p class="card-title">${ bookmark.enterprises.duty }</p>
+											<p class="card-text">${ bookmark.enterprises.career }</p>
+											<p class="card-text">${ bookmark.enterprises.work_type }</p>
+											<p class="card-text">${ bookmark.enterprises.degree }</p>
+											<p class="card-text">${ bookmark.enterprises.work_place }</p>
+											<button class="btn btn-primary todetail-button" data-recruit-num="${ bookmark.recruit_num }">상세보기</button>
+										</div>
+	                                </div>
+	                    </div>
+						</c:forEach>
+						
            		    </div>
            		    <!--즐겨찾기 끝-->
            		          
