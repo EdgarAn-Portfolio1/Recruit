@@ -162,7 +162,7 @@
 									<br>
 									<div class="form-group row">
 										<div class="col-lg-8 ml-auto">
-											<button id="edit-button" type="button" class="btn btn-primary" >수정하기</button>
+											<button id="edit-button" type="button" class="btn btn-primary" >수정</button>
 										</div>
 									</div>
 								</form>

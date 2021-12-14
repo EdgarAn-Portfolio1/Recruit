@@ -5,7 +5,7 @@
 <mapper namespace="com.recruit.mapper.AccountMapper">
 	<!-- 회원가입 -->
 	<insert id="insertAccount" parameterType="AccountVO">
-		INSERT INTO MEMBER(   MEMBERID
+		INSERT INTO member(   MEMBERID
 	   					     , PASSWD 
 	   					     , EMAIL
 	   					  )
@@ -17,26 +17,26 @@
     <!-- 로그인 -->
     <select id="selectAccountByIdAndPasswd" parameterType="AccountVO" resultType="AccountVO">
 		SELECT MEMBERID, EMAIL, USERTYPE, REGDATE
-		FROM MEMBER
+		FROM member
 		WHERE MEMBERID = #{memberId}
 		AND PASSWD = #{passwd}   
 	</select>
 	
 	<select id="selectCountByMemberId" parameterType="string" resultType="int">
-		SELECT COUNT(MEMBERID)
-		FROM MEMBER
+		SELECT COUNT(memberID)
+		FROM member
 		WHERE MEMBERID = #{memberId}
 	</select>
 	
 	<select id="searchMemberId" parameterType="string" resultType="String">
 		SELECT MEMBERID
-		FROM MEMBER
+		FROM member
 		WHERE EMAIL = #{email}
 	</select>
 	
 	<select id="searchPasswd" parameterType="hashmap" resultType="String">
 		SELECT PASSWD
-		FROM MEMBER
+		FROM member
 		WHERE EMAIL = #{email}
 		AND MEMBERID = #{memberId}
 	</select>

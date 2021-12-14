@@ -13,8 +13,8 @@
 
 	<bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shakeit" />
-		<property name="username" value="root" />
+		<property name="jdbcUrl" value="jdbc:mysql://3.38.186.130:3306/shakeit" />
+		<property name="username" value="kdigital2" />
 		<property name="password" value="mysql" />
 		<property name="minimumIdle" value="20" />
 		<property name="maximumPoolSize" value="100" />

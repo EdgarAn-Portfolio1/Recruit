@@ -95,7 +95,7 @@ public class FreeBoardController {
 		
 		// 데이터 읽기 ( 전달인자를 통해서 자동으로 읽어서 저장 )		
 		MultipartFile mf = req.getFile("attachment");
-		if (mf != null) {
+		if (mf != null && !mf.isEmpty() && mf.getOriginalFilename() != null && mf.getOriginalFilename().length() > 0) {
 			
 			ServletContext application = req.getServletContext();
 			String path = application.getRealPath("/resources/upload-files-free"); // web-path --> computer-path
@@ -120,15 +120,19 @@ public class FreeBoardController {
 				attachments.add(attachment);
 				frboard.setAttachments(attachments);
 
-				// 데이터베이스에 저장
-				FreeBoardService.frwriteBoard(frboard);
+				
 				
 			} catch (Exception ex) {
 				ex.printStackTrace();
 				model.addAttribute("fail", true);
 				return "board/frwrite";
 			}
+			
+			
 		}
+		
+		// 데이터베이스에 저장
+		FreeBoardService.frwriteBoard(frboard);
 		
 		// 목록으로 이동
 		return "redirect:frlist";

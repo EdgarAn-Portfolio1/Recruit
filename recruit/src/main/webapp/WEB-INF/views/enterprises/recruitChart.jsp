@@ -46,7 +46,7 @@
 				<div class="col-lg-12">
                         <div class="card">
                             <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                                <h4 class="card-title">2005 ~ 2018년직업별 연봉 TOP 10</h4>
+                                <h4 class="card-title">2005 ~ 2018년 직업별 연봉 TOP 10</h4>
                                 <canvas id="income-comparison-chart" width="671" height="201" style="display: block; height: 161px; width: 537px;" class="chartjs-render-monitor"></canvas>
                             </div>
                         </div>
@@ -127,9 +127,20 @@
                 {
                     label: "학력별 채용 공고",
                     data: degreeCount,
-                    borderColor: "rgba(117, 113, 249, 0.9)",
+                    borderColor: ['rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'],
                     borderWidth: "0",
-                    backgroundColor: "rgba(117, 113, 249, 0.5)"
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(129, 215, 66, 0.2)',
+                        'rgba(130, 36, 227, 0.2)']
                 }
             ]
         },
@@ -212,6 +223,11 @@
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false
                     }
                 }]
             }
