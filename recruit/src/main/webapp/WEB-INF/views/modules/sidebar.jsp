@@ -42,7 +42,7 @@
                     <li class="nav-label">ENTERPRISES</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i> <span class="nav-text">기업정보</span>
+                            <i class="icon-note menu-icon"></i> <span class="nav-text">채용 정보</span>
                         </a>
                         <ul aria-expanded="false">
                         	<li><a href="/recruit/enterprises/integrated_search?category=0">통합 검색</a></li>
