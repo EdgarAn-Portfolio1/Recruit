@@ -6,28 +6,28 @@
 
 	<select id="selectAllMembers" resultType="AccountVO">
 	SELECT MEMBERID, EMAIL, USERTYPE, REGDATE
-	FROM MEMBER
+	FROM member
 	</select>
 	
 	<select id="selectMemberByMemberID" parameterType="string" resultType="AccountVO">
 	SELECT MEMBERID, PASSWD, EMAIL, USERTYPE, REGDATE
-	FROM MEMBER
+	FROM member
 	WHERE MEMBERID = #{ memberId }
 	</select>
 
 	<insert id="insertMember" parameterType="AccountVO">
-	INSERT INTO MEMBER (memberId, passWd, email, userType, regDate)
+	INSERT INTO member (memberId, passWd, email, userType, regDate)
 	VALUES (#{ memberId }, #{passWd}, #{email}, #{userType}, #{regDate})
 	</insert>
 
 	<update id="updateMember" parameterType="AccountVO">
-	UPDATE MEMBER
+	UPDATE member
 	SET EMAIL = #{ email }, USERTYPE = #{ userType }
 	WHERE MEMBERID = #{ memberId }
 	</update>
 	
 	<update id="updateMemberDeleted" parameterType="string">
-	DELETE FROM MEMBER
+	DELETE FROM member
 	WHERE MEMBERID = #{ memberId }
 	</update>
 

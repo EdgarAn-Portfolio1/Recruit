@@ -29,4 +29,6 @@ public interface NoticeBoardMapper {
 
 	void insertNoticeBoardAttach(NoticeBoardAttachVO attachment);
 
+	NoticeBoardAttachVO selectBoardNoticeAttachByAttachNoticeNo(int attach_notice_no);
+
 }

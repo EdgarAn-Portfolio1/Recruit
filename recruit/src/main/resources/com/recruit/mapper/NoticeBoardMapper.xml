@@ -19,10 +19,30 @@
 	ORDER BY BOARD_NOTICE_NO DESC
 	</select>
 	
+	<!-- 상세보기 조회1 -->
+	<!-- 
 	<select id="selectNoticeBoardByNoticeBoardNo" parameterType="int" resultType="NoticeBoardVO">
 	SELECT BOARD_NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_WRITER, NOTICE_DATE, NOTICE_READCOUNT
 	FROM BOARD_NOTICE
 	WHERE BOARD_NOTICE_NO = #{ board_notice_no } AND NOTICE_DELETED = FALSE
+	</select> -->
+	
+	<!-- 상세보기 조회 2 -->
+ 	<resultMap id="boardResultMap" type="NoticeBoardVO">
+		<id column="BOARD_NOTICE_NO" property="board_notice_no" />
+		<result column="NOTICE_TITLE" property="notice_title" />
+		<result column="NOTICE_CONTENT" property="notice_content" />
+		<result column="NOTICE_WRITER" property="notice_writer" />
+		<result column="NOTICE_READCOUNT" property="notice_readCount" />
+		<result column="NOTICE_DATE" property="notice_Date" />
+		<collection property="attachments" column="BOARD_NOTICE_NO" resultMap="boardAttachResultMap" />
+	</resultMap>
+	<select id="selectNoticeBoardByNoticeBoardNo" parameterType="int" resultMap="boardResultMap">
+	SELECT B.BOARD_NOTICE_NO, B.NOTICE_TITLE, B.NOTICE_CONTENT, B.NOTICE_WRITER, B.NOTICE_READCOUNT, B.NOTICE_DATE, BA.ATTACH_NOTICE_NO, BA.SAVEDFILENAME, BA.USERFILENAME 
+	FROM BOARD_NOTICE B
+	LEFT OUTER JOIN BOARD_NOTICE_ATTACH BA
+	ON B.BOARD_NOTICE_NO = BA.BOARD_NOTICE_NO
+	WHERE B.BOARD_NOTICE_NO = #{ board_notice_no } AND B.NOTICE_DELETED = false 
 	</select>
 	
 	<update id="updateNoticeBoardNoticeReadCount" parameterType="int">
@@ -43,6 +63,30 @@
 	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
 	</update>
 	
+	<!-- ***************************************** -->
+	<insert id="insertNoticeBoardAttach" parameterType="NoticeBoardAttachVO">
+	INSERT INTO BOARD_NOTICE_ATTACH (BOARD_NOTICE_NO, SAVEDFILENAME, USERFILENAME)
+	VALUES (#{ board_notice_no }, #{ savedFileName }, #{ userFileName })
+	</insert>
+	
+	<resultMap id="boardAttachResultMap" type="NoticeBoardAttachVO">
+		<id column="ATTACH_NOTICE_NO" property="attach_notice_no" />
+		<result column="BOARD_NOTICE_NO" property="board_notice_no" />
+		<result column="SAVEDFILENAME" property="savedFileName" />
+		<result column="USERFILENAME" property="userFileName" />
+	</resultMap>
+	<select id="selectBoardNoticeAttachByBoardNoticeNo" parameterType="int" resultType="NoticeBoardAttachVO">
+	SELECT ATTACH_NOTICE_NO, BOARD_NOTICE_NO, SAVEDFILENAME, USERFILENAME
+	FROM BOARD_NOTICE_ATTACH
+	WHERE BOARD_NOTICE_NO = #{ board_notice_no }
+	</select>
+	
+	<select id="selectBoardNoticeAttachByAttachNoticeNo" parameterType="int" resultType="NoticeBoardAttachVO">
+	SELECT ATTACH_NOTICE_NO, BOARD_NOTICE_NO, SAVEDFILENAME, USERFILENAME
+	FROM BOARD_NOTICE_ATTACH
+	WHERE ATTACH_NOTICE_NO = #{ attach_notice_no }
+	</select>
+	
 	<!-- 페이저 -->
 	<select id="selectBoardCount" resultType="int">
 	SELECT COUNT(*)
@@ -57,10 +101,5 @@
 	</select>
 	<!-- 페이저 끝 -->
 	
-	<!-- ***************************************** -->
-	<insert id="insertNoticeBoardAttach" parameterType="NoticeBoardAttachVO">
-	INSERT INTO BOARD_NOTICE_ATTACH (BOARD_NOTICE_NO, SAVEDFILENAME, USERFILENAME)
-	VALUES (#{ board_notice_no }, #{ savedFileName }, #{ userFileName })
-	</insert>
 	
 </mapper>

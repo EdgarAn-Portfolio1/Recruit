@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.recruit.common.Util;
 import com.recruit.service.NoticeBoardService;
 import com.recruit.ui.BoardPager;
+import com.recruit.view.DownloadView;
 import com.recruit.vo.AccountVO;
 import com.recruit.vo.NoticeBoardAttachVO;
 import com.recruit.vo.NoticeBoardVO;
@@ -131,7 +134,7 @@ public class NoticeBoardController {
 	}
 	
 	@GetMapping(path = {"/nodetail" })
-	public String nodetail(int board_notice_no, Model model) {
+	public String nodetail(int board_notice_no, @RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
 		NoticeBoardVO noboard = NoticeBoardService.findNoticeBoardByboard_notice_no(board_notice_no);
 		
@@ -143,6 +146,7 @@ public class NoticeBoardController {
 		noboard.setNotice_readCount(noboard.getNotice_readCount() + 1);
 		
 		model.addAttribute("noboard", noboard);
+		model.addAttribute("pageNo", pageNo);
 		
 		return "board/nodetail";
 	}
@@ -176,5 +180,23 @@ public class NoticeBoardController {
 		
 		return "redirect:nodetail?board_notice_no=" + noboard.getBoard_notice_no();
 	}
+	
+//	@GetMapping(path = { "/nodownload" })
+//	public View download(@RequestParam(defaultValue = "-1") int attach_notice_no, Model model) {
+//		if (attach_notice_no == -1) {
+//			// return "redirect:list";
+//			return new RedirectView("nolist");
+//		}
+//		
+//		NoticeBoardAttachVO attachment = NoticeBoardService.findBoardNoticeAttachByAttachNoticeNo(attach_notice_no);
+//		if (attachment == null) {
+//			return new RedirectView("nolist");
+//		}
+//		model.addAttribute("attachment", attachment);
+//		
+//		// return "view-name or response content with @ResponseBody";
+//		DownloadView view = new DownloadView();
+//		return view;
+//	}
 	
 }

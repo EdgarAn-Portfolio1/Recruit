@@ -55,9 +55,45 @@
             Content body start
         ***********************************-->
         <div class="content-body">
+        
 			<div class="container-fluid">
+			
 				<div class="row">
-					<div class="col-lg-6 col-sm-6">
+				
+				<div class="col-lg-6 col-xl-6">
+				
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">오늘의 업종 지수</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Product</th>
+                                                <th scope="col">INDICE GAUGE</th>
+                                                <th scope="col">INDICE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>1</th>
+                                                <td>Air Conditioner</td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px">
+                                                        <div class="progress-bar gradient-1" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div> 
+                                                </td>
+                                                <td><span class="label gradient-1 btn-rounded">70%</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                      
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-title">
@@ -104,75 +140,101 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /# card -->
                     </div>
-					<div class="col-md-6 col-sm-3">
-					<div class="card">
-					<div class="text-center">
-           	         		<div class="card-title"><h5>내가 즐겨찾기 누른 채용공고</h5></div>
+                    
+                    <!--오른쪽 영역  -->
+                    <div class="col-lg-6 col-xl-6">
+						<div class="card">
+							<div class="text-center">
+           	         			<div class="card-title"><h5>내가 즐겨찾기 누른 채용공고</h5></div>
            	         		</div>
-           	         		</div>
-					<div class="row">
-					<div class="col-md-6 col-sm-3">
+           	         	</div>
+           	         	
+           	       <!--즐겨찾기-->  		
+       				<div class="row row-col-1 row-cols-md-2 g-9">
+       				
+       					<div class="col">
            	         		<div class="card">
              	        	   <div class="card-body">
     	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
        		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
         	                    </div>
-           		          </div>
-           		         </div>
+           		          	</div>
+           		        </div>
            		         
-           		      <div class="col-md-6 col-sm-3">
-       	               <div class="card">
-   	        	               <div class="card-body">
-                	              <h5 class="card-title">윤경석의 data LAB</h5>
-                    	             <p class="card-text">세상의 모든 데이터를 분석해드립니다.</p><a href="#" class="btn btn-primary">LINK</a>
-                        	     </div>
-       	          	       </div>
-       	          	       </div>
-       	          	       
-       	          	       <div class="col-md-6 col-sm-3">
-       	               <div class="card">
-   	        	               <div class="card-body">
-                	              <h5 class="card-title">김우석의 신나는 웹개발</h5>
-                    	             <p class="card-text">웹개발은 신나게해도 어렵습니다.</p><a href="#" class="btn btn-primary">LINK</a>
-                        	     </div>
-       	          	       </div>
-       	          	       </div>
-       	          	       <div class="col-md-6 col-sm-3">
-       	               <div class="card">
-   	        	               <div class="card-body">
-                	              <h5 class="card-title">김려원의 보안 전문가</h5>
-                    	             <p class="card-text">세계 최고 레벨의 보안을 자랑</p><a href="#" class="btn btn-primary">LINK</a>
-                        	     </div>
-       	          	       </div>
-       	          	       </div>
-       	          	       <div class="col-md-6 col-sm-3">
-       	               <div class="card">
-   	        	               <div class="card-body">
-                	              <h5 class="card-title">한병운의 프론트엔드 스쿨</h5>
-                    	             <p class="card-text">너무 어려워요</p><a href="#" class="btn btn-primary">LINK</a>
-                        	     </div>
-       	          	       </div>
-       	          	       </div>
-       	          	       <div class="col-md-6 col-sm-3">
-       	               <div class="card">
-   	        	               <div class="card-body">
-                	              <h5 class="card-title">안재완의 행복한 IT세상</h5>
-                    	             <p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
-                        	     </div>
-       	          	       </div>
-       	          	       </div>
-       	          	       </div>
-                        </div>
-                        
-                        </div>
+           		        <div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                    </div>
+           		          	</div>
+           		        </div>
+           		        
+           		       	<div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                    </div>
+           		        	</div>
+           		        </div>
+           		        
+           		        <div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                   </div>
+           		          	</div>
+           		        </div>
+           		        
+           		        <div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                   </div>
+           		          	</div>
+           		        </div>
+           		        
+           		        <div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                   </div>
+           		          	</div>
+           		        </div>
+           		        
+           		        <div class="col">
+           	         		<div class="card">
+             	        	   <div class="card-body">
+    	                    	   <h5 class="card-title">안재완의 행복한 IT세상</h5>
+       		                    		<p class="card-text">비전공자 전공자 상관없이 누구나 하고싶은 일을 하며 월급을 받아가실 수 있습니다.</p><a href="#" class="btn btn-primary">LINK</a>
+        	                   </div>
+           		          	</div>
+           		        </div>
+           		         
+           		    </div>
+           		    <!--즐겨찾기 끝-->
+           		          
+       	          </div>
+       	          <!--오른쪽 영역 끝-->
+       	          	     
+ 
                     </div>
+                    <!--container-fluid end-->
+                        
+              </div>
+              <!--content body end  -->			
+                 
+         </div>
+         </div>
+         <!--main wrapper end  -->
                     
-                    <!--end of row  -->
-                  </div>                  
-                 </div> 
-                <!--end of tab-->
+       
+               
     		
         <!-- #/ container -->
         
