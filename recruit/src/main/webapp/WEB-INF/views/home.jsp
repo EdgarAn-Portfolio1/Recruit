@@ -197,6 +197,17 @@
     <script src="./plugins/fullcalendar/js/fullcalendar.min.js"></script>
     <script src="./js/plugins-init/fullcalendar-init.js"></script>
    <jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
+   
+  <script type="text/javascript">
+$(function() {
+	$('.todetail-button').on('click', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		var recruit_num = $(this).attr('data-recruit-num');
+		location.href = "/recruit/enterprises/enterprisesInformation?recruit_num=" + recruit_num;
+	});
+});
+</script> 
 </body>
 
 </html>
