@@ -24,10 +24,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		// 데이터베이스에 만들어진 boardNo를 조회하는 작업 필요 (mybaits가 자동으로 처리, useGeneratedKeys=true, ... )
 		// board.boardNo ==> 새로 생성된 boardNo
-		
-		for (FreeBoardAttachVO attachment : frboard.getAttachments()) {
-			attachment.setBoard_free_no(frboard.getBoard_free_no());
-			freeBoardMapper.insertFreeBoardAttach(attachment); // BoardAttach 테이블에 데이터 저장
+		if (frboard.getAttachments() != null && frboard.getAttachments().size() > 0) {
+			for (FreeBoardAttachVO attachment : frboard.getAttachments()) {
+				attachment.setBoard_free_no(frboard.getBoard_free_no());
+				freeBoardMapper.insertFreeBoardAttach(attachment); // BoardAttach 테이블에 데이터 저장
+			}
 		}
 				
 		return 0;
