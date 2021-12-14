@@ -197,6 +197,8 @@
  
 <jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 <script type="text/javascript">
+
+
 	$(function(){
 		
 		$('.category-modal-button').on('click', function(event) {

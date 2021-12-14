@@ -130,15 +130,18 @@
   	select work_place, count(*) as cnt 
   	from job
 	group by work_place
+	order by cnt desc
   	</select>
   	
    <select id="selectRecruitCountByDegree"  resultType="hashmap">
   	select degree, count(*) as cnt from job
   	group by degree
+  	order by cnt desc
   	</select>
   	
   	<select id="selectRecruitCountByWorkType" resultType="WorkTypeVO">
-  	select * from work_type  	
+  	select * from work_type 
+  	order by cnt desc 	
   	</select>
   	
   	<select id ="selectIncomeComparison" resultType="IncomeAndWelfareVO">
