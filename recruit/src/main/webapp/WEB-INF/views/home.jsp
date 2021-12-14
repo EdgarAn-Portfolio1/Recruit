@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -62,35 +64,14 @@
 				
 				<div class="col-lg-6 col-xl-6">
 				
-                        <div class="card">
+                        <div class="card gradient-1">
                             <div class="card-body">
-                                <h4 class="card-title">오늘의 업종 지수</h4>
-                                <div class="table-responsive">
-                                    <table class="table header-border table-hover verticle-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Product</th>
-                                                <th scope="col">INDICE GAUGE</th>
-                                                <th scope="col">INDICE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td>Air Conditioner</td>
-                                                <td>
-                                                    <div class="progress" style="height: 10px">
-                                                        <div class="progress-bar gradient-1" style="width: 70%;" role="progressbar"><span class="sr-only">70% Complete</span>
-                                                        </div>
-                                                    </div> 
-                                                </td>
-                                                <td><span class="label gradient-1 btn-rounded">70%</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <h3 class="card-title text-white">오늘의 업종 지수</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">${ empty score ? "0" : score }</h2>
+                                    <p class="text-white mb-0"><fmt:formatDate value="${ today }" pattern="yyyy-MM-dd" /></p>
                                 </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-cloud"></i></span>
                             </div>
                         </div>
                       
