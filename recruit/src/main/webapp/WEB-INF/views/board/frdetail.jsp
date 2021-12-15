@@ -70,7 +70,7 @@
 										</div>
                                         
                                         <c:choose>
-											<c:when test="${ loginuser.memberId == frboard.free_writer }">
+											<c:when test="${ loginuser.memberId == frboard.free_writer or loginuser.userType eq 'admin' }">
 												<a id="edit-button" type="button" class="btn btn-success" style="color:white">수정</a>
 												<a id="delete-button" type="button" class="btn btn-success" style="color:white">삭제</a>
 												<button id="tolist-button" type="button" class="btn btn-success">목록</button>

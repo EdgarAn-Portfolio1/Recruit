@@ -150,7 +150,6 @@
 									<br>
 									
 									<div class="form-group row">
-										<
 										<div class="col-lg-8 ml-auto">
 											<button id="edit-button" type="button" class="btn btn-primary">수정</button>
 										</div>

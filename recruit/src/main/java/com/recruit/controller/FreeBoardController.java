@@ -52,7 +52,7 @@ public class FreeBoardController {
 	@GetMapping(path = { "/frlist" })
 	public String frlist(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
-		int pageSize = 3;	// 한 페이지에 표시되는 게시물 개수
+		int pageSize = 5;	// 한 페이지에 표시되는 게시물 개수
 		int pagerSize = 3;	// 표시되는 페이지 번호 개수
 		int count = 0;		// 총 게시물 개수
 		
@@ -75,6 +75,7 @@ public class FreeBoardController {
 	public String showWriteForm(HttpSession session) {
 		
 		AccountVO accountVo = (AccountVO)session.getAttribute("loginuser");
+		
 		if (accountVo == null) {
 			return "redirect:/account/login";
 		}

@@ -89,6 +89,9 @@
 <script type="text/javascript">
 
 $(function() {
+	
+	$("#free_writer").attr("readonly", true);
+	
 	$('#update-button').on('click', function(event) {
 		var yes = confirm('수정하시겠습니까?');
 		if (yes) {

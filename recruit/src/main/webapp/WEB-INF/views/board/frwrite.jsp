@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="form-group">
                                         	<label>작성자</label>
-                                            <input type="text" class="form-control input-default" name="free_writer" value="${ loginuser.memberId }">
+                                            <input type="text" class="form-control input-default" id="free_writer" name="free_writer" value="${ loginuser.memberId }">
                                         </div>
                                         <div class="form-group">
                              				<label>첨부파일</label>
@@ -47,7 +47,7 @@
                              			</div>
                                         <div class="form-group">
                                         	<label>내용</label>
-                                            <input type="text" class="form-control input-default" placeholder="내용을 입력하세요." name="free_content" style="height:200px;">
+                                            <textarea class="form-control input-default" placeholder="내용을 입력하세요." name="free_content" rows="5"></textarea>
                                         </div>
                                     	<button id="write-button" class="btn btn-primary btn-sm" >쓰기</button>
                                     	<button id="tolist-button" class="btn btn-primary btn-sm" >목록</button>
@@ -68,6 +68,17 @@
 <script type="text/javascript">
 
 $(function() { // jQuery의 main 함수 역할 ( 시작점 )
+		$("#free_writer").attr('readonly', true);
+
+		$(document).on('keydown', function(event) {
+			if (event.keyCode == 13) {
+				event.preventDefault();
+				
+				return false;
+			}
+		});
+		
+		
 		$('#write-button').on('click', function(event) {
 			event.preventDefault();	 // 이벤트를 발생시킨 객체의 기본 동장 ( 다른페이지로 이동 등 )
 			event.stopPropagation(); // 상위 객체로 이벤트 전달 차단
