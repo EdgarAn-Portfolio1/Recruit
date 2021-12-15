@@ -33,7 +33,7 @@
                             <li><a href="/recruit/mypage/myInfo">내 정보 관리</a></li>
                             <!-- <li><a href="/recruit/mypage/myInfo">내 정보 관리</a></li> -->
                             <li><a href="/recruit/mypage/bookmark">즐겨찾기</a></li>
-                            <li><a href="/recruit/mypage/smartMatch">스마트매치</a></li>
+                            <!-- <li><a href="/recruit/mypage/smartMatch">스마트매치</a></li> -->
                         </ul>
                     </li>
                     	</c:when>
